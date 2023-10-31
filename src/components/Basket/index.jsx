@@ -6,7 +6,7 @@ import styles from './Basket.module.scss'
 import CloseBtn from "../Buttons/CloseBtn";
 
 
-const Basket = ({ closeBasketTab, cartItems }) => {
+const Basket = ({ closeBasketTab, basketItems, removeItem }) => {
 
 
 
@@ -18,8 +18,8 @@ const Basket = ({ closeBasketTab, cartItems }) => {
           <CloseBtn close={closeBasketTab}/>
         </h2>
         <div className={styles.items}>
-          { cartItems.map(card => (
-            <CardBasket key={card.id} name={ card.name } price={ card.price } src={ card.src }/>
+          { basketItems.map(card => (
+            <CardBasket key={card.id} id={card.id} name={ card.name } price={ card.price } src={ card.src } removeItem={removeItem}/>
           )) }
         </div>
 

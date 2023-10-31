@@ -4,13 +4,12 @@ import Header from "./components/Header";
 import Basket from "./components/Basket";
 import CloseBtn from "./components/Buttons/CloseBtn";
 
-import mockData from '../src/mockData.json'
 import axios from "axios";
 
 
 function App() {
 
-  const [ cartItems, setCartItems ] = useState([])
+  const [ basketItems, setBasketItems ] = useState([])
   const [ items, setItems ] = useState([])
   const [ openBasket, setOpenBasket ] = useState(false)
   const [ searchValue, setSearchValue ] = useState('')
@@ -31,16 +30,22 @@ function App() {
       .then((res) => setItems(res.data))
 
     axios.get('https://6540801245bedb25bfc20160.mockapi.io/cartItem')
-      .then((res) => setCartItems(res.data))
+      .then((res) => setBasketItems(res.data))
   }, [])
 
-  const onAddToCart = (obj) => {
-    axios.post('https://6540801245bedb25bfc20160.mockapi.io/cartItem', obj)
+  const onAddToBasket = (obj) => {
+    axios.post('https://6540801245bedb25bfc20160.mockapi.io/cartItem', obj);
+    setBasketItems((prev) => [ ...prev, obj ]
+    )
+  }
+  const removeItemBasket = (id) => {
+    axios.delete(`https://6540801245bedb25bfc20160.mockapi.io/cartItem/${id}`);
+    setBasketItems((prev) => prev.filter((item) => item.id !== id))
   }
 
   return (
     <div className="wrapper">
-      { openBasket && <Basket cartItems={ cartItems } closeBasketTab={ closeBasketTab }/> }
+      { openBasket && <Basket removeItem={removeItemBasket} basketItems={ basketItems } closeBasketTab={ closeBasketTab }/> }
       <Header openBasketTab={ openBasketTab }/>
       <div className="content">
         <div className='content-title'>
@@ -63,7 +68,7 @@ function App() {
           { items
             .filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
             .map(card => (
-              <Card key={ card.id } name={ card.name } price={ card.price } src={ card.src }/>
+              <Card onAddToBasket={onAddToBasket} key={ card.id } name={ card.name } price={ card.price } src={ card.src }/>
             )) }
         </div>
       </div>
