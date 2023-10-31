@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CardBasket from "./CardBasket";
 import GreenBtn from "../Buttons/GreenBtn";
 
@@ -6,40 +6,20 @@ import styles from './Basket.module.scss'
 import CloseBtn from "../Buttons/CloseBtn";
 
 
-const arr = [
-  {
-    desc: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 12999,
-    url: '/img/sneakers/4.jpg'
-  },
-  {
-    desc: 'Мужские Кроссовки Nike Air Max 270',
-    price: 11999,
-    url: '/img/sneakers/3.jpg'
-  },
-  {
-    desc: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 12999,
-    url: '/img/sneakers/2.jpg'
-  },
-  {
-    desc: 'Мужские Кроссовки Nike Air Max 270',
-    price: 11999,
-    url: '/img/sneakers/1.jpg'
-  },
-]
+const Basket = ({ closeBasketTab, cartItems }) => {
 
-const Basket = ({ closeBasketTab }) => {
+
+
   return (
     <div className={ styles.overlay } >
       <div className={ styles.basket }>
         <h2>
           Корзина
-          <CloseBtn closeBasketTab={closeBasketTab}/>
+          <CloseBtn close={closeBasketTab}/>
         </h2>
         <div className={styles.items}>
-          { arr.map(card => (
-            <CardBasket desc={ card.desc } price={ card.price } url={ card.url }/>
+          { cartItems.map(card => (
+            <CardBasket key={card.id} name={ card.name } price={ card.price } src={ card.src }/>
           )) }
         </div>
 
