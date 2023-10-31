@@ -1,0 +1,33 @@
+.items {
+  flex: 1;
+  overflow: auto;
+  margin-bottom: 40px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #F3F3F3;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0 auto;
+    font-size: 16px;
+  }
+
+  b {
+    font-size: 16px;
+  }
+}
+
+.cartText {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  margin: 0 25px;
+}
+

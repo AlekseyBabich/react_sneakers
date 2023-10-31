@@ -1,0 +1,12 @@
+.removeBtnWrapper {
+}
+
+.removeBtn {
+  opacity: 0.4;
+  transition: opacity 0.15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
