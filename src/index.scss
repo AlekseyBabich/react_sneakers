@@ -17,6 +17,7 @@ body {
   background: #FFFFFF;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
+
 }
 
 
@@ -44,6 +45,7 @@ body {
 
 .search-block {
   display: flex;
+  position: relative;
   border: 1px solid #F3F3F3;
   border-radius: 10px;
   padding: 0 15px;
@@ -56,11 +58,14 @@ body {
     outline: none;
   }
 }
+.close-btn-wrapper {
+  margin-top: 6px;
+}
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  column-gap: 40px;
   flex-direction: row;
   row-gap: 30px;
   margin-top: 40px;

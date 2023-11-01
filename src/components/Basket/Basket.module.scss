@@ -29,6 +29,20 @@
   }
 }
 
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.itemsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
 .items {
   flex: 1;
   overflow: auto;

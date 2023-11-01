@@ -5,7 +5,7 @@ import CardImg from "./CardImg";
 import CardFavoriteBtn from "./CardFavoriteBtn";
 import CardAddBtn from "./CardAddBtn";
 
-const Card = ({ name, price, src }) => {
+const Card = ({ name, price, src, onAddToBasket }) => {
 
 
   return (
@@ -19,7 +19,7 @@ const Card = ({ name, price, src }) => {
           <b>{ price } руб.</b>
         </div>
         <div className="cardImageBlock">
-          <CardAddBtn/>
+          <CardAddBtn name={name} price={price} src={src} onAddToBasket={onAddToBasket}/>
         </div>
       </div>
     </div>
